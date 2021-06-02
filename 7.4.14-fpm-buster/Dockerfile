@@ -9,4 +9,7 @@ RUN apt update; \
     php -r "unlink('composer-setup.php');"; \
     mv composer.phar /usr/local/bin/composer; \
     composer global require laravel/installer; \
-    ln -s /root/.composer/vendor/bin/laravel /usr/local/bin/laravel;
+    ln -s /root/.composer/vendor/bin/laravel /usr/local/bin/laravel; \
+    curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"; \
+    chmod +x /usr/local/bin/phpunit; \
+    phpunit --version
