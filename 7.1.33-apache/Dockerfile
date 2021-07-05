@@ -1,5 +1,7 @@
 FROM php:7.1.33-apache-stretch
 
+#tag： wangsying/php:7.1.33-apache
+
 COPY ./sources.list /etc/apt/sources.list.cn
 COPY ./package/wkhtmltox_0.12.6-1.stretch_amd64.deb .
 COPY ./package/ImageMagick.tar.gz .
@@ -30,6 +32,19 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     xfonts-base \
     xfonts-75dpi \
     fontconfig \
+    libfontenc1 \
+    libjpeg62-turbo \
+    libx11-6 \
+    libx11-data \
+    libxau6 \
+    libxcb1 \
+    libxdmcp6 \
+    libxext6 \
+    libxfont1 \
+    libxrender1 \
+    x11-common \
+    xfonts-encodings \
+    xfonts-utils \
     xvfb \
     pkg-config \
     libxrender1 \
@@ -72,7 +87,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && a2enmod rewrite ssl \
     && apt-get clean -y && mv /etc/apt/sources.list.bak /etc/apt/sources.list \
     && rm -rf /tmp/* && rm -rf /var/lib/apt/lists/*
-
+    
 WORKDIR /var/www
 
 EXPOSE 80
